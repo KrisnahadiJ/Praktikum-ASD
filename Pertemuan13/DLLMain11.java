@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class DLLMain11 {
     static Mahasiswa11 inputMahasiswa(Scanner sc) {
     System.out.print("Masukkan NIM: ");
-    String nim = sc.nextLine();
+    String nim = sc.nextLine(); // Baca NIM sebagai String
     System.out.print("Masukkan Nama: ");
     String nama = sc.nextLine();
     System.out.print("Masukkan Kelas: ");
@@ -15,16 +15,17 @@ public class DLLMain11 {
     boolean valid = false;
     while (!valid) {
         System.out.print("Masukkan IPK: ");
-        String ipkStr = sc.nextLine();
+        String ipkInput = sc.nextLine(); // Baca IPK sebagai String terlebih dahulu
         try {
-            ipk = Double.parseDouble(ipkStr);
-            valid = true;
+            ipk = Double.parseDouble(ipkInput); // Coba parsing ke double
+            valid = true; // Jika berhasil, keluar dari loop
         } catch (NumberFormatException e) {
-            System.out.println("Input IPK harus berupa angka. Silakan coba lagi.");
+            System.out.println("Input IPK harus berupa angka desimal. Silakan coba lagi.");
         }
     }
+
     return new Mahasiswa11(nim, nama, kelas, ipk);
-}
+    }
 
     public static void main(String[] args) {
         DoubleLinkedList11 list = new DoubleLinkedList11();
@@ -38,6 +39,7 @@ public class DLLMain11 {
             System.out.println("3. Hapus di awal");
             System.out.println("4. Hapus di akhir");
             System.out.println("5. Tampilkan data");
+            System.out.println("6. Sisipkan setelah node tertentu");
             System.out.println("7. Cari Mahasiswa berdasarkan NIM");
             System.out.println("0. Keluar");
             System.out.print("Pilih menu: ");
@@ -72,6 +74,13 @@ public class DLLMain11 {
                     }
                 }
                 case 5 -> list.print();
+                case 6 -> {
+                    System.out.print("Masukkan NIM node yang akan disisipkan setelahnya: ");
+                    String keyNim = sc.nextLine();
+                    System.out.println("Masukkan data untuk node baru:");
+                    Mahasiswa11 mhs = inputMahasiswa(sc);
+                    list.insertAfter(keyNim, mhs);
+                }
                 case 7 -> {
                     System.out.print("Masukkan NIM yang dicari: ");
                     String nimCari = sc.nextLine();
