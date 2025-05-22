@@ -66,13 +66,17 @@ public class DoubleLinkedList11 {
     }
 
     public void print() {
+    if (head == null) {
+        System.out.println("Linked list kosong.");
+        return;
+    }
     Node11 current = head;
     System.out.println("Isi Linked List:");
     while (current != null) {
-        current.data.tampil();
+        current.data.tampil(); 
         current = current.next;
     }
-}
+    }
 
     public Mahasiswa11 removeFirst() {
     if (head == null) {
