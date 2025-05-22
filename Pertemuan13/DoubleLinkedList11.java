@@ -73,17 +73,18 @@ public class DoubleLinkedList11 {
     Node11 current = head;
     System.out.println("Isi Linked List:");
     while (current != null) {
-        current.data.tampil(); 
+        current.data.tampil();
         current = current.next;
     }
     }
 
     public Mahasiswa11 removeFirst() {
-    if (head == null) {
-        return null; // Linked list kosong
+    if (isEmpty()) {
+        System.out.println("List kosong, tidak bisa dihapus.");
+        return null;
     }
     Mahasiswa11 data = head.data;
-    if (head == tail) { // Jika hanya ada satu node
+    if (head == tail) {
         head = tail = null;
     } else {
         head = head.next;
@@ -93,11 +94,12 @@ public class DoubleLinkedList11 {
     }
 
     public Mahasiswa11 removeLast() {
-    if (tail == null) {
-        return null; // Linked list kosong
+    if (isEmpty()) {
+        System.out.println("List kosong, tidak bisa dihapus.");
+        return null;
     }
     Mahasiswa11 data = tail.data;
-    if (head == tail) { // Jika hanya ada satu node
+    if (head == tail) {
         head = tail = null;
     } else {
         tail = tail.prev;
@@ -110,10 +112,10 @@ public class DoubleLinkedList11 {
     Node11 current = head;
     while (current != null) {
         if (current.data.nim.equals(nim)) {
-            return current; // Node ditemukan
+            return current;
         }
         current = current.next;
     }
-    return null; // Node tidak ditemukan
+    return null;
     }
 }
