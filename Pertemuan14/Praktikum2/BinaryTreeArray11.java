@@ -22,4 +22,24 @@ public class BinaryTreeArray11 {
             }
         }
     }
+
+    //Tugas praktikum nomor 4
+    void add(Mahasiswa11 data) {
+        if (idxLast < dataMahasiswa.length - 1) {
+            idxLast++; // Tambahkan indeks terakhir
+            dataMahasiswa[idxLast] = data; // Masukkan data ke array
+        } else {
+            System.out.println("Tree penuh, tidak bisa menambahkan data.");
+        }
+    }
+
+    void traversePreOrder(int idxStart) {
+        if (idxStart <= idxLast) {
+            if (dataMahasiswa[idxStart] != null) {
+                dataMahasiswa[idxStart].tampilInformasi(); // Node saat ini
+                traversePreOrder(2 * idxStart + 1); // Anak kiri
+                traversePreOrder(2 * idxStart + 2); // Anak kanan
+            }
+        }
+    }
 }
